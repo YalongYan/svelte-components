@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" class="scroll-horizontal">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="renderer" content="webkit" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        
+        <!-- 强制不缓存HTML文件，特别针对360浏览器 -->
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        
+        <title>开黑大厅 - 点点开黑官方聊天室</title>
+        <style>
+        </style>
+        <script>
+            (function (ua, app) {
+                if (/iphone|ipad|ipod/i.test(ua)) {
+                    location.href = location.origin + '/dlappchat?url=' + encodeURIComponent(location.href);
+                } else if (/android|adr/i.test(ua)) {
+                    location.href = 'http://sj.qq.com/myapp/detail.htm?apkName=com.tuwan.yw';
+                }
+            })(navigator.userAgent, navigator.appVersion);
+
+            if (!window.globalThis) {
+                window.globalThis = window;
+            }
+            /**
+             * 自定义重写log，通过url里的log=1 开起log， 否则console.log是没输出的
+             * 只是用在线上环境
+             **/
+            if (window.location.host == 'y.tuwan.com' && window.location.href.indexOf('client=1') < 0) {
+                if (!/log=1/.test(location.search)) {
+                    console.log = function () {};
+                }
+            }
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="https://res1.tuwan.com/templet/play/public/css/animate.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://asset.tuwan.com/chatroom/script/swiper-bundle.min@9.4.0.css" />
+        <link rel="stylesheet" type="text/css" href="https://res1.tuwan.com/templet/teach/tuwanjun/css/jquery.fancybox.css" />
+        <link rel="stylesheet" type="text/css" href="https://res1.tuwan.com/templet/play/chat/css/zdialog.css" />
+        <script>
+            window.MAIN_DOMAIN = location.host.split('.').splice(-2).join('.');
+        </script>
+        <script src="https://res2.tuwan.com/templet/play/chat/v2/js/socket.io.js"></script>
+        <!-- <script src="https://asset2.tuwan.com/chatroom/script/AgoraRTC_N-4.17.2-9.5.js"></script> -->
+        <script src="https://asset2.tuwan.com/chatroom/script/AgoraRTC_N-4.17.2-1101.js"></script>
+        <script src="https://res2.tuwan.com/templet/play/chat/js/jquery.js"></script>
+        <script src="https://asset.tuwan.com/chatroom/script/swiper-bundle.min@9.4.0.js"></script>
+        <script src="https://res2.tuwan.com/templet/teach/tuwanjun/js/jquery.fancybox.js"></script>
+        <script src="https://res1.tuwan.com/templet/play/chat/js/zdialog.js"></script>
+        <script src="https://res1.tuwan.com/templet/play/chat/js/logincommon.js"></script>
+        <!-- <script src="https://asset2.tuwan.com/chatroom/script/svga@2.3.1.min.js?v1"></script> -->
+        <script src="https://asset2.tuwan.com/script/svga/2.3.4/svga.min.js"></script>
+        <script src="https://asset2.tuwan.com/chatroom/script/jszip.min.js?v=1"></script>
+        <script defer src="https://asset.tuwan.com/script/howler.core.min.js"></script>
+        <!-- <script src="https://asset2.tuwan.com/chatroom/script/vertc@4.49.5.min.js"></script> -->
+        <script src="https://res1.tuwan.com/templet/play/chat/v7/js/snabbt.min.js"></script>
+        <script src="https://res2.tuwan.com/templet/play/chat/chatv2/js/jquery.tooltip.js?v=1"></script>
+        <script src="https://asset.tuwan.com/script/lazyload.js"></script>
+        <script src="https://asset.tuwan.com/chatroom/script/anime.min.js"></script>
+        <script src="https://asset2.tuwan.com/chatroom/script/vap@1.0.5.min.js"></script>
+        <script src="https://asset2.tuwan.com/chatroom/script/ZegoExpressWebRTC-2.25.210.js"></script>
+        <script src="https://asset2.tuwan.com/chatroom/script/trtc_5.11.1-ktv.3.js"></script> 
+        <script src="https://asset2.tuwan.com/chatroom/script/trtc_5.11.1-ktv.3-chorus.iife.js"></script>
+        <script src="https://asset.tuwan.com/chatroom/script/gt4.js"></script>
+        <script src="https://asset.tuwan.com/officialsite/script/aliyun-oss-sdk-6.0.1.js"></script>
+        <script src="https://asset.tuwan.com/script/jsbridge.js?v=20250614_0955"></script>
+        <script src="https://asset.tuwan.com/officialsite/alpha/alphavideo.js?v=3"></script>
+   
+        <script>
+            // 百度统计的代码
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement('script');
+                hm.src = 'https://hm.baidu.com/hm.js?f1748797823f5aa42dea9379be1ec173';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script type="module" src="/src/main.js"></script>
+        <script>
+            if (window.isChatTest) {
+                $('body').append(`<script  src="https://asset2.tuwan.com/chatroom/script/logincommon-test.js" />`);
+            }
+        </script>
+        <script src="https://qiyukf.com/script/5607d8d7bb8499d5047a161266dd4336.js?hidden=1"></script>
+        <script>
+            // 先临时放这里，后面新版本上去 要把这些干掉
+            $(document).ready(function () {
+                $('#newVersionCtn .newVersionBtn').on('click', function (e) {
+                    window.location.href = window.location.href.replace(/(chatroom_v2|chatroom)/,function(s,p1){
+                        if(p1==='chatroom') return 'chatroom_v2';
+                        return 'chatroom';
+                    });
+                });
+            });
+        </script>
+         
+        <script src="https://asset-2025.tuwan.com/chatroom/photoWall/photoWall.umd.0.3.0.js"></script>
+        <link href="https://asset-2025.tuwan.com/chatroom/photoWall/photoWall.0.3.0.css" rel="stylesheet" />
+    </body>
+</html>
