@@ -31,3 +31,6 @@ cypress/videos/
 cypress/screenshots/
 cypress/downloads/
 cypress/fixtures/examples.json
+
+*storybook.log
+storybook-static
