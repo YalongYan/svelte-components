@@ -4,6 +4,7 @@
   export let disabled = false;
   export let loading = false;
   export let block = false;
+  export let text = '';
   
   $: classes = [
     'btn',
@@ -29,6 +30,7 @@
   {/if}
   <span class="btn__content">
     <slot />
+    {text}
   </span>
 </button>
 

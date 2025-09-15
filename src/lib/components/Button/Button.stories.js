@@ -7,20 +7,20 @@ export default {
 
 export const Default = {
   args: {
-    children: 'Click me'
+    text: 'Click me'
   }
 };
 
 export const Primary = {
   args: {
     variant: 'primary',
-    children: 'Primary Button'
+    text: 'Primary Button'
   }
 };
 
 export const Secondary = {
   args: {
     variant: 'secondary',
-    children: 'Secondary Button'
+    text: 'Secondary Button'
   }
 };

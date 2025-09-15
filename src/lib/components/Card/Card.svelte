@@ -3,6 +3,7 @@
   export let padding = 'medium'; // none, small, medium, large
   export let hoverable = false;
   export let clickable = false;
+  export let children = '';
   
   $: classes = [
     'card',
@@ -11,16 +12,18 @@
     hoverable ? 'card--hoverable' : '',
     clickable ? 'card--clickable' : ''
   ].filter(Boolean).join(' ');
+  const handleClick = () => {
+    console.log('1');
+  }
 </script>
 
 <div 
   class={classes}
-  on:click
-  on:keydown
-  role={clickable ? 'button' : 'presentation'}
-  tabindex={clickable ? 0 : undefined}
+  on:click={handleClick}
+  on:keydown={handleClick}
+  role='presentation'
 >
-  <slot />
+  {children}
 </div>
 
 <style>
