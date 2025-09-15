@@ -3,7 +3,6 @@
   export let padding = 'medium'; // none, small, medium, large
   export let hoverable = false;
   export let clickable = false;
-  export let children = '';
   
   $: classes = [
     'card',
@@ -23,7 +22,7 @@
   on:keydown={handleClick}
   role='presentation'
 >
-  {children}
+  <slot />
 </div>
 
 <style>

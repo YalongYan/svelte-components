@@ -1,0 +1,54 @@
+# 开发文件
+src/
+.storybook/
+storybook-static/
+node_modules/
+.git/
+.gitignore
+
+# 构建工具配置
+vite.config.js
+svelte.config.js
+rollup.config.js
+
+# 开发依赖
+*.log
+.DS_Store
+Thumbs.db
+
+# 测试文件
+test/
+tests/
+__tests__/
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# 开发环境文件
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# IDE 文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 临时文件
+tmp/
+temp/
+.tmp/
+
+# 文档源码（只保留构建后的）
+docs/
+*.md
+!README.md
+
+# 其他
+coverage/
+.nyc_output/
+.cache/

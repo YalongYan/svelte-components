@@ -1,17 +1,54 @@
 {
-  "name": "@taole/chatroom",
-  "private": true,
-  "version": "3.0.0-rc.1",
+  "name": "svelte-components-v4",
+  "private": false,
+  "version": "1.0.8",
+  "description": "A modern Svelte component library with beautiful UI components",
   "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "unpkg": "dist/index.umd.js",
+  "jsdelivr": "dist/index.umd.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "keywords": [
+    "svelte",
+    "components",
+    "ui",
+    "library",
+    "button",
+    "input",
+    "card",
+    "design-system"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/svelte-components-v4.git"
+  },
+  "homepage": "https://github.com/your-username/svelte-components-v4#readme",
+  "bugs": {
+    "url": "https://github.com/your-username/svelte-components-v4/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "NODE_OPTIONS='--max-old-space-size=4096' vite build",
+    "build:lib": "BUILD_MODE=library NODE_OPTIONS='--max-old-space-size=4096' vite build",
+    "build:lib:local": "BUILD_MODE=library vite build",
     "localbuild": "vite build",
     "build-analyze": "NODE_ENV=prod vite build",
     "preview": "vite preview",
     "check": "svelte-check",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy-storybook": "npm run build-storybook && gh-pages -d storybook-static",
+    "prepublishOnly": "npm run build:lib"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^8.3.0",
