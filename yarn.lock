@@ -366,6 +366,11 @@
     polished "^4.2.2"
     uuid "^9.0.0"
 
+"@storybook/addon-controls@^9.0.8":
+  version "9.0.8"
+  resolved "https://registry.npmjs.org/@storybook/addon-controls/-/addon-controls-9.0.8.tgz"
+  integrity sha512-6MY9QeBv2vNmBXH+ONmbpp/Gu/odSxriN1+BAY+il9OyXZBMq3OiDsjoH7xY5V7PGr+0XhZfOLkamvx3q+lQTg==
+
 "@storybook/addon-docs@^8.3.0":
   version "8.3.0"
   resolved "https://registry.npmjs.org/@storybook/addon-docs/-/addon-docs-8.3.0.tgz"
