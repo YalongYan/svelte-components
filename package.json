@@ -1,16 +1,28 @@
 {
   "name": "svelte-components-v4",
   "private": false,
-  "version": "1.0.8",
+  "version": "1.6.0",
   "description": "A modern Svelte component library with beautiful UI components",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "main": "src/lib/index.js",
+  "module": "src/lib/index.js",
+  "svelte": "src/lib/index.js",
+  "types": "src/lib/index.js",
+  "exports": {
+    "./package.json": {
+      "types": "./package.json",
+      "svelte": "./package.json"
+    },
+    ".": {
+      "types": "./src/lib/index.js",
+      "svelte": "./src/lib/index.js",
+      "default": "./src/lib/index.js"
+    }
+  },
   "unpkg": "dist/index.umd.js",
   "jsdelivr": "dist/index.umd.js",
   "files": [
-    "dist",
+    "src",
     "README.md"
   ],
   "keywords": [
@@ -39,7 +51,7 @@
   "scripts": {
     "dev": "vite",
     "build": "NODE_OPTIONS='--max-old-space-size=4096' vite build",
-    "build:lib": "BUILD_MODE=library NODE_OPTIONS='--max-old-space-size=4096' vite build",
+    "build:lib": "echo 'No build needed for Svelte component library - source files are used directly'",
     "build:lib:local": "BUILD_MODE=library vite build",
     "localbuild": "vite build",
     "build-analyze": "NODE_ENV=prod vite build",
@@ -47,14 +59,12 @@
     "check": "svelte-check",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "deploy-storybook": "npm run build-storybook && gh-pages -d storybook-static",
-    "prepublishOnly": "npm run build:lib"
+    "deploy-storybook": "npm run build-storybook && gh-pages -d storybook-static"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^8.3.0",
     "@storybook/addon-actions": "^8.3.0",
-    "@storybook/addon-controls": "^9.0.8",
-    "@storybook/addon-docs": "^8.3.0",
+    "@storybook/addon-essentials": "^8.3.0",
     "@storybook/svelte": "^8.3.0",
     "@storybook/svelte-vite": "^8.3.0",
     "@sveltejs/vite-plugin-svelte": "^2.4.1",
@@ -79,5 +89,8 @@
     "vite-plugin-commonjs": "^0.10.1",
     "vite-plugin-node-polyfills": "^0.21.0",
     "vite-plugin-wasm": "^3.3.0"
+  },
+  "peerDependencies": {
+    "svelte": "^4.0.0"
   }
 }

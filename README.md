@@ -1,21 +1,6 @@
-# 🎨 点点组件库 (Svelte Components Library)
+# 🎨 Svelte Components V4
 
-一个基于 **Svelte 4** 构建的现代化组件库，提供丰富的 UI 组件和优秀的开发体验。
-
-## ⚠️ 重要说明
-
-**本组件库使用 `new` 关键字实例化组件，而不是直接在模板中使用。**
-
-```javascript
-// ✅ 正确用法
-const button = new Button({
-  target: document.getElementById('container'),
-  props: { text: 'Click me' }
-});
-
-// ❌ 错误用法
-<Button text="Click me" />
-```
+一个基于 **Svelte 4** 构建的现代化组件库，提供丰富的 UI 组件和优秀的开发体验。采用源码分发策略，确保最佳性能和开发体验。
 
 ## ✨ 特性
 
@@ -25,6 +10,9 @@ const button = new Button({
 - ♿ **可访问性** - 遵循 WCAG 标准，支持键盘导航
 - 🔧 **可定制** - 丰富的配置选项和主题支持
 - 📚 **文档完善** - 详细的组件文档和使用示例
+- ⚡ **高性能** - 源码分发，支持 treeshaking 和按需加载
+- 🔧 **易集成** - 直接在 Svelte 模板中使用，无需额外配置
+- 🎯 **零配置样式** - 样式完全集成，无需单独引入 CSS 文件
 
 ## 📦 组件列表
 
@@ -49,37 +37,186 @@ const button = new Button({
 npm install svelte-components-v4
 ```
 
-### 使用
+### 在 Svelte 项目中使用
 
-```javascript
-import { Button, Card, Input } from 'svelte-components-v4';
+```svelte
+<script>
+  import { Button, Card, Input } from 'svelte-components-v4';
+</script>
 
-// 在你的 Svelte 组件中使用
-// 注意：需要使用 new 关键字实例化组件
-const button = new Button({
-  target: document.getElementById('button-container'),
-  props: {
-    variant: 'primary',
-    text: 'Click me'
-  }
-});
-
-const card = new Card({
-  target: document.getElementById('card-container'),
-  props: {
-    variant: 'elevated',
-    hoverable: true
-  }
-});
-
-const input = new Input({
-  target: document.getElementById('input-container'),
-  props: {
-    label: 'Username',
-    placeholder: 'Enter your username'
-  }
-});
+<!-- 直接在模板中使用组件 -->
+<!-- 样式会自动包含，无需单独引入 CSS 文件 -->
+<Button text="Click me" variant="primary" />
+<Card variant="elevated" hoverable>
+  <h3>Hello World</h3>
+  <p>这是一个卡片组件的内容</p>
+</Card>
+<Input label="Username" placeholder="Enter your username" />
 ```
+
+### 💡 重要提示：无需引入 CSS
+
+**本组件库的样式已完全集成到组件中，无需单独引入任何 CSS 文件！**
+
+- ✅ **零配置** - 导入组件即可使用，样式自动包含
+- ✅ **无冲突** - 每个组件的样式都有唯一作用域，不会影响其他样式
+- ✅ **按需加载** - 只包含实际使用组件的样式，支持 treeshaking
+- ✅ **自动优化** - Svelte 编译器会自动优化样式
+
+### 在普通 HTML 项目中使用
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>使用 Svelte 组件库</title>
+</head>
+<body>
+  <div id="app"></div>
+  
+  <script type="module">
+    import { Button, Card } from 'svelte-components-v4';
+    
+    // 创建按钮
+    const button = new Button({
+      target: document.getElementById('app'),
+      props: {
+        text: 'Click me',
+        variant: 'primary'
+      }
+    });
+    
+    // 创建卡片
+    const card = new Card({
+      target: document.getElementById('app'),
+      props: {
+        variant: 'elevated',
+        hoverable: true
+      }
+    });
+  </script>
+</body>
+</html>
+```
+
+## 📚 组件文档
+
+### Button 组件
+
+一个现代化的按钮组件，支持多种变体、尺寸和状态。
+
+```svelte
+<script>
+  import { Button } from 'svelte-components-v4';
+</script>
+
+<!-- 基础用法 -->
+<Button text="Click me" />
+
+<!-- 不同变体 -->
+<Button text="Primary" variant="primary" />
+<Button text="Secondary" variant="secondary" />
+<Button text="Success" variant="success" />
+<Button text="Danger" variant="danger" />
+
+<!-- 不同尺寸 -->
+<Button text="Small" size="small" />
+<Button text="Medium" size="medium" />
+<Button text="Large" size="large" />
+
+<!-- 状态 -->
+<Button text="Loading" loading />
+<Button text="Disabled" disabled />
+<Button text="Block" block />
+```
+
+**Props:**
+
+| 属性 | 类型 | 默认值 | 描述 |
+|------|------|--------|------|
+| `text` | `string` | `''` | 按钮显示的文本 |
+| `variant` | `'primary' \| 'secondary' \| 'success' \| 'danger' \| 'warning' \| 'info'` | `'primary'` | 按钮变体 |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | 按钮尺寸 |
+| `disabled` | `boolean` | `false` | 是否禁用 |
+| `loading` | `boolean` | `false` | 是否显示加载状态 |
+| `block` | `boolean` | `false` | 是否占满容器宽度 |
+
+### Card 组件
+
+一个灵活的卡片组件，支持多种样式变体和交互效果。
+
+```svelte
+<script>
+  import { Card } from 'svelte-components-v4';
+</script>
+
+<!-- 基础用法 -->
+<Card>
+  <h3>Card Title</h3>
+  <p>Card content goes here</p>
+</Card>
+
+<!-- 不同变体 -->
+<Card variant="elevated">
+  <h3>Elevated Card</h3>
+  <p>This card has elevation</p>
+</Card>
+
+<Card variant="outlined">
+  <h3>Outlined Card</h3>
+  <p>This card has an outline</p>
+</Card>
+
+<!-- 交互效果 -->
+<Card hoverable clickable>
+  <h3>Interactive Card</h3>
+  <p>Hover and click effects enabled</p>
+</Card>
+```
+
+**Props:**
+
+| 属性 | 类型 | 默认值 | 描述 |
+|------|------|--------|------|
+| `variant` | `'default' \| 'elevated' \| 'outlined'` | `'default'` | 卡片变体 |
+| `padding` | `'small' \| 'medium' \| 'large' \| 'none'` | `'medium'` | 内边距大小 |
+| `hoverable` | `boolean` | `false` | 是否显示悬停效果 |
+| `clickable` | `boolean` | `false` | 是否可点击 |
+
+### Input 组件
+
+一个功能丰富的输入框组件，支持标签、占位符和验证。
+
+```svelte
+<script>
+  import { Input } from 'svelte-components-v4';
+</script>
+
+<!-- 基础用法 -->
+<Input placeholder="Enter text..." />
+
+<!-- 带标签 -->
+<Input label="Username" placeholder="Enter your username" />
+
+<!-- 不同尺寸 -->
+<Input size="small" placeholder="Small input" />
+<Input size="large" placeholder="Large input" />
+
+<!-- 状态 -->
+<Input disabled placeholder="Disabled input" />
+<Input error="This field is required" placeholder="Input with error" />
+```
+
+**Props:**
+
+| 属性 | 类型 | 默认值 | 描述 |
+|------|------|--------|------|
+| `label` | `string` | `''` | 输入框标签 |
+| `placeholder` | `string` | `''` | 占位符文本 |
+| `value` | `string` | `''` | 输入值 |
+| `disabled` | `boolean` | `false` | 是否禁用 |
+| `error` | `string` | `''` | 错误信息 |
+| `size` | `'small' \| 'medium' \| 'large'` | `'medium'` | 输入框尺寸 |
 
 ## 🛠️ 开发指南
 
@@ -120,378 +257,123 @@ npm run storybook        # 启动 Storybook 开发服务器
 npm run build-storybook  # 构建 Storybook 静态文件
 
 # 构建相关
-npm run build            # 构建应用（原有配置）
-npm run build:lib        # 构建组件库（ES/CJS/UMD 格式）
-npm run build:lib:local  # 本地构建组件库（无内存限制）
+npm run build            # 构建应用
 npm run localbuild       # 本地构建应用（无内存限制）
 npm run build-analyze    # 构建并分析包大小
 
 # 代码质量
 npm run check           # 运行 Svelte 类型检查
-npm run lint            # 运行代码检查
 ```
 
 ## 📦 发布到 NPM
 
-### 1. 准备工作
+### 组件库架构
 
-确保你的 `package.json` 配置正确：
+本组件库采用 **源码分发** 策略：
+
+- **无需构建** - 直接发布 `.svelte` 源码文件
+- **高性能** - 消费项目的 Svelte 编译器会进行优化
+- **Treeshaking** - 只打包实际使用的组件
+- **类型安全** - 完整的 TypeScript 支持
+
+### 发布流程
+
+1. **更新版本号**
+   ```bash
+   npm version patch  # 或 minor, major
+   ```
+
+2. **直接发布**
+   ```bash
+   npm publish
+   ```
+
+### package.json 配置
 
 ```json
 {
   "name": "svelte-components-v4",
-  "version": "1.0.0",
-  "description": "A modern Svelte component library",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
+  "version": "1.5.0",
+  "main": "src/lib/index.js",
+  "module": "src/lib/index.js",
+  "svelte": "src/lib/index.js",
+  "exports": {
+    "./package.json": {
+      "types": "./package.json",
+      "svelte": "./package.json"
+    },
+    ".": {
+      "types": "./src/lib/index.js",
+      "svelte": "./src/lib/index.js",
+      "default": "./src/lib/index.js"
+    }
+  },
   "files": [
-    "dist",
+    "src",
     "README.md"
   ],
-  "keywords": ["svelte", "components", "ui", "library"],
-  "author": "Your Name",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/your-username/svelte-components-v4.git"
-  },
-  "publishConfig": {
-    "access": "public"
+  "peerDependencies": {
+    "svelte": "^4.0.0"
   }
 }
 ```
 
-### 2. 构建组件库
+## 🎯 最佳实践
 
-```bash
-# 构建组件库（ES/CJS/UMD 格式）
-npm run build:lib
+### 在 Svelte 项目中使用
 
-# 检查构建结果
-ls -la dist/
-# 应该看到以下文件：
-# - index.js      (CommonJS 格式，11.32 kB)
-# - index.esm.js  (ES Module 格式，19.77 kB)
-# - index.umd.js  (UMD 格式，11.56 kB)
-# - style.css     (样式文件，6.03 kB)
+```svelte
+<script>
+  import { Button, Card, Input } from 'svelte-components-v4';
+  
+  let username = '';
+  let showCard = false;
+  
+  function handleClick() {
+    showCard = !showCard;
+  }
+</script>
+
+<!-- 无需引入任何 CSS 文件，样式自动包含 -->
+<Input 
+  bind:value={username} 
+  label="Username" 
+  placeholder="Enter your username" 
+/>
+
+<Button 
+  text="Toggle Card" 
+  variant="primary" 
+  on:click={handleClick} 
+/>
+
+{#if showCard}
+  <Card variant="elevated" hoverable>
+    <h3>Hello, {username}!</h3>
+    <p>Welcome to our application.</p>
+  </Card>
+{/if}
 ```
 
-### 3. 测试 UMD 格式
+### 🚫 常见错误
 
-```bash
-# 构建完成后，可以打开测试页面
-open test-umd.html
-# 或者在浏览器中访问 test-umd.html 文件
+**❌ 错误做法：**
+```javascript
+// 不需要这样做
+import 'svelte-components-v4/dist/styles.css'; // 不存在这样的文件
 ```
 
-### 4. 发布到 NPM
-
-```bash
-# 登录 NPM（如果还没登录）
-npm login
-
-# 发布包
-npm publish
-
-# 或者发布 beta 版本
-npm publish --tag beta
+**✅ 正确做法：**
+```svelte
+<script>
+  import { Button } from 'svelte-components-v4';
+  // 样式自动包含，无需额外操作
+</script>
 ```
 
-### 4. 版本管理
+### 样式定制
 
-```bash
-# 更新版本号
-npm version patch    # 1.0.0 -> 1.0.1
-npm version minor    # 1.0.0 -> 1.1.0
-npm version major    # 1.0.0 -> 2.0.0
-
-# 发布新版本
-npm publish
-```
-
-## 🌐 部署 Storybook
-
-### 方法一：使用 Storybook 官方服务
-
-1. **构建 Storybook**
-   ```bash
-   npm run build-storybook
-   ```
-
-2. **部署到 Chromatic**
-   ```bash
-   # 安装 Chromatic
-   npm install --save-dev chromatic
-   
-   # 部署
-   npx chromatic --project-token=your-project-token
-   ```
-
-### 方法二：部署到 GitHub Pages
-
-1. **安装 gh-pages**
-   ```bash
-   npm install --save-dev gh-pages
-   ```
-
-2. **添加部署脚本到 package.json**
-   ```json
-   {
-     "scripts": {
-       "deploy-storybook": "npm run build-storybook && gh-pages -d storybook-static"
-     }
-   }
-   ```
-
-3. **部署**
-   ```bash
-   npm run deploy-storybook
-   ```
-
-4. **访问**
-   ```
-   https://your-username.github.io/svelte-components-v4
-   ```
-
-### 方法三：部署到 Vercel
-
-1. **安装 Vercel CLI**
-   ```bash
-   npm install -g vercel
-   ```
-
-2. **创建 vercel.json 配置**
-   ```json
-   {
-     "buildCommand": "npm run build-storybook",
-     "outputDirectory": "storybook-static",
-     "framework": null
-   }
-   ```
-
-3. **部署**
-   ```bash
-   vercel --prod
-   ```
-
-### 方法四：部署到 Netlify
-
-1. **构建配置**
-   在项目根目录创建 `netlify.toml`：
-   ```toml
-   [build]
-     command = "npm run build-storybook"
-     publish = "storybook-static"
-   ```
-
-2. **部署**
-   - 连接 GitHub 仓库到 Netlify
-   - 设置构建命令：`npm run build-storybook`
-   - 设置发布目录：`storybook-static`
-
-## 🔧 在其他项目中使用
-
-### Svelte 项目中使用
-
-1. **安装组件库**
-   ```bash
-   npm install svelte-components-v4
-   ```
-
-2. **在组件中导入使用**
-   ```svelte
-   <script>
-     import { Button, Card, Input } from 'svelte-components-v4';
-     import { onMount } from 'svelte';
-     
-     let username = '';
-     let buttonComponent, cardComponent, inputComponent;
-     
-     onMount(() => {
-       // 创建按钮组件
-       buttonComponent = new Button({
-         target: document.getElementById('login-button'),
-         props: {
-           variant: 'primary',
-           text: '登录',
-           block: true
-         }
-       });
-       
-       // 创建输入框组件
-       inputComponent = new Input({
-         target: document.getElementById('username-input'),
-         props: {
-           label: '用户名',
-           placeholder: '请输入用户名',
-           icon: '👤',
-           iconPosition: 'left'
-         }
-       });
-       
-       // 创建卡片组件
-       cardComponent = new Card({
-         target: document.getElementById('login-card'),
-         props: {
-           variant: 'elevated',
-           padding: 'large'
-         }
-       });
-     });
-     
-     function handleClick() {
-       console.log('Button clicked!');
-     }
-   </script>
-   
-   <div id="login-card">
-     <h2>用户登录</h2>
-     <div id="username-input"></div>
-     <div id="login-button"></div>
-   </div>
-   ```
-
-### 在浏览器中直接使用（UMD 格式）
-
-1. **通过 CDN 引入**
-   ```html
-   <!DOCTYPE html>
-   <html>
-   <head>
-     <script src="https://unpkg.com/svelte-components-v4/dist/index.umd.js"></script>
-     <script src="https://unpkg.com/svelte@4/dist/svelte.js"></script>
-   </head>
-   <body>
-     <div id="app"></div>
-     
-     <script>
-       // 使用全局变量 SvelteComponentsV4
-       const { Button, Card, Input } = SvelteComponentsV4;
-       
-       // 创建 Svelte 应用
-       const app = new Svelte.createApp({
-         target: document.getElementById('app'),
-         components: { Button, Card, Input },
-         template: `
-           <Card variant="elevated">
-             <h2>Hello from UMD!</h2>
-             <Button variant="primary" text="Click me" />
-           </Card>
-         `
-       });
-     </script>
-   </body>
-   </html>
-   ```
-
-2. **通过 jsDelivr CDN**
-   ```html
-   <script src="https://cdn.jsdelivr.net/npm/svelte-components-v4/dist/index.umd.js"></script>
-   ```
-
-### 在 SvelteKit 项目中使用
-
-1. **安装依赖**
-   ```bash
-   npm install svelte-components-v4
-   ```
-
-2. **在页面中使用**
-   ```svelte
-   <!-- src/routes/+page.svelte -->
-   <script>
-     import { Button, Card, Input } from 'svelte-components-v4';
-     import { onMount } from 'svelte';
-     
-     let cardComponent, buttonComponent;
-     
-     onMount(() => {
-       // 创建卡片组件
-       cardComponent = new Card({
-         target: document.getElementById('welcome-card'),
-         props: {
-           variant: 'elevated'
-         }
-       });
-       
-       // 创建按钮组件
-       buttonComponent = new Button({
-         target: document.getElementById('start-button'),
-         props: {
-           variant: 'primary',
-           text: '开始使用'
-         }
-       });
-     });
-   </script>
-   
-   <main>
-     <div id="welcome-card">
-       <h1>欢迎使用点点组件库</h1>
-       <div id="start-button"></div>
-     </div>
-   </main>
-   ```
-
-### 在 Vite + Svelte 项目中使用
-
-1. **安装依赖**
-   ```bash
-   npm install svelte-components-v4
-   ```
-
-2. **配置 Vite**
-   ```javascript
-   // vite.config.js
-   import { defineConfig } from 'vite';
-   import { svelte } from '@sveltejs/vite-plugin-svelte';
-   
-   export default defineConfig({
-     plugins: [svelte()],
-     optimizeDeps: {
-       include: ['svelte-components-v4']
-     }
-   });
-   ```
-
-3. **在组件中使用**
-   ```svelte
-   <script>
-     import { Button, Card, Input } from 'svelte-components-v4';
-     import { onMount } from 'svelte';
-     
-     let components = {};
-     
-     onMount(() => {
-       // 创建组件实例
-       components.button = new Button({
-         target: document.getElementById('my-button'),
-         props: {
-           variant: 'primary',
-           text: 'Click me'
-         }
-       });
-       
-       components.card = new Card({
-         target: document.getElementById('my-card'),
-         props: {
-           variant: 'elevated',
-           hoverable: true
-         }
-       });
-     });
-   </script>
-   
-   <div id="my-card">
-     <h2>My Card</h2>
-     <div id="my-button"></div>
-   </div>
-   ```
-
-## 🎨 主题定制
-
-组件库支持主题定制，你可以通过 CSS 变量来修改颜色：
+组件库使用 CSS 变量，便于主题定制：
 
 ```css
 :root {
@@ -504,40 +386,43 @@ npm publish
 }
 ```
 
-## 📚 组件文档
-
-访问我们的 Storybook 文档查看所有组件的详细使用说明：
-
-- [在线文档](https://your-storybook-url.com)
-- [本地开发](http://localhost:6006)
-
 ## 🤝 贡献指南
 
-我们欢迎社区贡献！如果你有好的想法或发现了问题，请：
+我们欢迎社区贡献！请遵循以下步骤：
 
-1. Fork 这个项目
-2. 创建你的特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交你的更改 (`git commit -m 'Add some AmazingFeature'`)
+1. Fork 本仓库
+2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 创建一个 Pull Request
+5. 开启 Pull Request
 
 ### 开发规范
 
-- 使用 TypeScript 进行类型检查
-- 遵循 ESLint 和 Prettier 配置
-- 为新组件编写 Storybook stories
-- 确保所有测试通过
+- 使用 TypeScript 进行类型定义
+- 遵循 Svelte 官方风格指南
+- 编写完整的组件文档
+- 添加 Storybook stories
+- 确保代码通过所有测试
 
 ## 📄 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+本项目基于 MIT 许可证开源 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
-## 📞 联系我们
+## 🔗 相关链接
 
-- 项目地址：[GitHub Repository](https://github.com/your-username/svelte-components-v4)
-- 问题反馈：[Issues](https://github.com/your-username/svelte-components-v4/issues)
-- 文档地址：[Storybook](https://your-storybook-url.com)
+- [Svelte 官网](https://svelte.dev/)
+- [SvelteKit](https://kit.svelte.dev/)
+- [Storybook](https://storybook.js.org/)
+- [组件库文档](https://your-storybook-url.com)
+
+## 📞 支持
+
+如果你遇到任何问题或有建议，请：
+
+- 提交 [Issue](https://github.com/your-username/svelte-components-v4/issues)
+- 查看 [文档](https://your-storybook-url.com)
+- 参与 [讨论](https://github.com/your-username/svelte-components-v4/discussions)
 
 ---
 
-**开始构建你的下一个 Svelte 项目吧！** 🚀
+**Happy Coding! 🚀**
